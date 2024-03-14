@@ -7,7 +7,7 @@ const dbName = process.env.DB_NAME || 'defaultdb';
 const connection = mysql.createConnection({
     port: 13212,
     host: 'mysql-1272cfb7-mohanjividil-0173.a.aivencloud.com',
-    user: 'User',
+    user: 'avnadmin',
     password: 'AVNS_y1X05hhwgTYiNGMIQnY',
     authPlugins: {
         caching_sha2_password: () => require('mysql/lib/auth/plugins/caching_sha2_password').password
