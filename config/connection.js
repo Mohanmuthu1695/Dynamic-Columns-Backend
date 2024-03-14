@@ -1,9 +1,9 @@
 const mysql = require("mysql");
 const fs = require('fs');
-// require("dotenv").config();
+require("dotenv").config();
 
-// const port = 3306;
-// const dbName = process.env.DB_NAME || 'defaultdb';
+const port = 13212;
+const dbName = process.env.DB_NAME || 'defaultdb';
 
 // const connection = mysql.createConnection({
 //     port: 13216,
