@@ -31,7 +31,7 @@ const connection = mysql.createConnection({
   database: 'defaultdb',
   ssl: {
     // Specify the path to your .pem file
-    ca: fs.readFileSync('./assets/ca.pem'),
+    ca: fs.readFileSync('assets/ca.pem'),
   }
 });
 
