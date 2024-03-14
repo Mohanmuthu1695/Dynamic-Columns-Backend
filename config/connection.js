@@ -5,11 +5,13 @@ const port = 3306;
 const dbName = process.env.DB_NAME || 'defaultdb';
 
 const connection = mysql.createConnection({
-    port:13212,
+    port: 13212,
     host: 'mysql-1272cfb7-mohanjividil-0173.a.aivencloud.com',
     user: 'User',
     password: 'AVNS_y1X05hhwgTYiNGMIQnY',
-    // database: dbName
+    authPlugins: {
+        mysql_native_password: () => require('mysql/lib/auth/plugins/mysql_native_password').sha256_password
+    }
 });
 
 connection.connect((err) => {
