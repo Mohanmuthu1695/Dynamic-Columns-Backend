@@ -5,10 +5,10 @@ const port = 3306;
 const dbName = process.env.DB_NAME || 'defaultdb';
 
 const connection = mysql.createConnection({
-    port: 13212,
-    host: 'mysql-1272cfb7-mohanjividil-0173.a.aivencloud.com',
+    port: 13216,
+    host: 'mysql-1fb2cc5f-mohanjividil-0173.a.aivencloud.com',
     user: 'avnadmin',
-    password: 'AVNS_y1X05hhwgTYiNGMIQnY',
+    password: 'AVNS_4YODaTCgXDqNIQodn-E',
     // authSwitchHandler: (data, cb) => {
     //     if (data.pluginName === 'caching_sha2_password') {
     //         // Use the mysql-async-auth library to handle the authentication switch
