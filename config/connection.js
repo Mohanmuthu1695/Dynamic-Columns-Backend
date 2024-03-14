@@ -2,13 +2,13 @@ const mysql = require("mysql");
 require("dotenv").config();
 
 const port = 3306;
-const dbName = process.env.DB_NAME || 'formbuilder';
+const dbName = process.env.DB_NAME || 'defaultdb';
 
 const connection = mysql.createConnection({
-    port,
-    host: 'localhost',
-    user: 'root',
-    password: '',
+    port:13212,
+    host: 'mysql-1272cfb7-mohanjividil-0173.a.aivencloud.com',
+    user: 'User',
+    password: 'AVNS_y1X05hhwgTYiNGMIQnY',
     // database: dbName
 });
 
