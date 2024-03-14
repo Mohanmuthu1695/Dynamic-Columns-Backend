@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
     user: 'User',
     password: 'AVNS_y1X05hhwgTYiNGMIQnY',
     authPlugins: {
-        mysql_native_password: () => require('mysql/lib/auth/plugins/mysql_native_password').sha256_password
+        caching_sha2_password: () => require('mysql/lib/auth/plugins/caching_sha2_password').password
     }
 });
 
