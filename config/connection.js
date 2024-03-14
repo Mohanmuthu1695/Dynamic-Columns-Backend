@@ -1,26 +1,37 @@
 const mysql = require("mysql");
+const fs = require('fs');
 require("dotenv").config();
 
 const port = 3306;
 const dbName = process.env.DB_NAME || 'defaultdb';
 
+// const connection = mysql.createConnection({
+//     port: 13216,
+//     host: 'mysql-1fb2cc5f-mohanjividil-0173.a.aivencloud.com',
+//     user: 'avnadmin',
+//     password: 'AVNS_4YODaTCgXDqNIQodn-E',
+//     // authSwitchHandler: (data, cb) => {
+//     //     if (data.pluginName === 'caching_sha2_password') {
+//     //         // Use the mysql-async-auth library to handle the authentication switch
+//     //         require('mysql-async-auth/caching_sha2_password').init(connection.config.password).then((password) => {
+//     //             cb(null, password);
+//     //         }).catch((err) => {
+//     //             cb(err);
+//     //         });
+//     //     } else {
+//     //         cb(new Error(`Unsupported authentication plugin: ${data.pluginName}`));
+//     //     }
+//     // }
+// });
 const connection = mysql.createConnection({
-    port: 13216,
-    host: 'mysql-1fb2cc5f-mohanjividil-0173.a.aivencloud.com',
-    user: 'avnadmin',
-    password: 'AVNS_4YODaTCgXDqNIQodn-E',
-    // authSwitchHandler: (data, cb) => {
-    //     if (data.pluginName === 'caching_sha2_password') {
-    //         // Use the mysql-async-auth library to handle the authentication switch
-    //         require('mysql-async-auth/caching_sha2_password').init(connection.config.password).then((password) => {
-    //             cb(null, password);
-    //         }).catch((err) => {
-    //             cb(err);
-    //         });
-    //     } else {
-    //         cb(new Error(`Unsupported authentication plugin: ${data.pluginName}`));
-    //     }
-    // }
+  host: 'mysql-1fb2cc5f-mohanjividil-0173.a.aivencloud.com',
+  user: 'avnadmin',
+  password: 'AVNS_4YODaTCgXDqNIQodn-E',
+  database: 'defaultdb',
+  ssl: {
+    // Specify the path to your .pem file
+    ca: fs.readFileSync('/path/to/your.pem'),
+  }
 });
 
 connection.connect((err) => {
