@@ -9,18 +9,18 @@ const connection = mysql.createConnection({
     host: 'mysql-1272cfb7-mohanjividil-0173.a.aivencloud.com',
     user: 'avnadmin',
     password: 'AVNS_y1X05hhwgTYiNGMIQnY',
-    authSwitchHandler: (data, cb) => {
-        if (data.pluginName === 'caching_sha2_password') {
-            // Use the mysql-async-auth library to handle the authentication switch
-            require('mysql-async-auth/caching_sha2_password').init(connection.config.password).then((password) => {
-                cb(null, password);
-            }).catch((err) => {
-                cb(err);
-            });
-        } else {
-            cb(new Error(`Unsupported authentication plugin: ${data.pluginName}`));
-        }
-    }
+    // authSwitchHandler: (data, cb) => {
+    //     if (data.pluginName === 'caching_sha2_password') {
+    //         // Use the mysql-async-auth library to handle the authentication switch
+    //         require('mysql-async-auth/caching_sha2_password').init(connection.config.password).then((password) => {
+    //             cb(null, password);
+    //         }).catch((err) => {
+    //             cb(err);
+    //         });
+    //     } else {
+    //         cb(new Error(`Unsupported authentication plugin: ${data.pluginName}`));
+    //     }
+    // }
 });
 
 connection.connect((err) => {
