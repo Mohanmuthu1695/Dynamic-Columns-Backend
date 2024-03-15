@@ -3,7 +3,7 @@ const fs = require('fs');
 require("dotenv").config();
 
 const port = 13212;
-const dbName = process.env.DB_NAME || 'defaultdb';
+const dbName = process.env.DB_NAME || 'dynamic';
 
 // const connection = mysql.createConnection({
 //     port: 13216,
@@ -28,7 +28,7 @@ const connection = mysql.createConnection({
   host: 'mysql-1fb2cc5f-mohanjividil-0173.a.aivencloud.com',
   user: 'avnadmin',
   password: 'AVNS_4YODaTCgXDqNIQodn-E',
-  database: 'defaultdb',
+  database: 'dynamic',
   ssl: {
     // Specify the path to your .pem file
     ca: fs.readFileSync('assets/ca.pem'),
