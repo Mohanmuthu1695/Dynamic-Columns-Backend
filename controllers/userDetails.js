@@ -184,7 +184,7 @@ const addUser = async (req, res) => {
                 const existingColumns = columns.map(column => column.Field);
 
                 // Filter formData keys to include only existing columns
-                const keys = Object.keys(formData).filter(key => existingColumns.includes(key));
+                const keys = Object.keys(formData).filter(key => existingColumns.includes(key) || key === 'status');
 
                 // Construct column names string
                 const columnsString = keys.join(',');
@@ -229,6 +229,7 @@ const addUser = async (req, res) => {
         return res.status(500).json({ message: "Internal server error", error: err });
     }
 };
+
 
 const getUsers = async (req, res) => {
     const tableName = req.params.tableName;

@@ -11,17 +11,16 @@ const addSchema = async (req, res) => {
 
       // Function to convert label with spaces to camelCase
       const toCamelCase = (label) => {
-        const camelCaseString = label.replace(/\w\S*/g, function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }).replace(/\s+/g, '');
-        
-        // Convert the first character to lowercase
-        return camelCaseString.charAt(0).toLowerCase() + camelCaseString.slice(1);
-    };
-    
-      
+          const camelCaseString = label.replace(/\w\S*/g, function(txt) {
+              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+          }).replace(/\s+/g, '');
+
+          // Convert the first character to lowercase
+          return camelCaseString.charAt(0).toLowerCase() + camelCaseString.slice(1);
+      };
+
       const toSmall = (label) => {
-        return label.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace(/\s+/g, '').toLowerCase();
+          return label.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace(/\s+/g, '').toLowerCase();
       };
 
       // Filter out components with type "button" and create table columns based on generatedForm components
@@ -29,6 +28,9 @@ const addSchema = async (req, res) => {
           .filter(component => component.type !== "button")
           .map(component => `${toCamelCase(component.label)} TEXT`)
           .join(',');
+
+      // Append 'status' column to the columns list
+      const columnsWithStatus = `${columns}, status BOOLEAN DEFAULT FALSE`;
 
       // Insert the JSON data into the database along with the form name and table name
       const insertQuery = "INSERT INTO formsschema (json, formname, tableName) VALUES (?, ?, ?)";
@@ -38,10 +40,10 @@ const addSchema = async (req, res) => {
               throw err;
           }
 
-          // Create a table based on the formName and its components
+          // Create a table based on the formName and its components including the 'status' column
           const createTableQuery = `CREATE TABLE IF NOT EXISTS ${tableName} (
               id INT AUTO_INCREMENT PRIMARY KEY,
-              ${columns}
+              ${columnsWithStatus}
           )`;
           connection.query(createTableQuery, (err, results) => {
               if (err) {
@@ -61,6 +63,7 @@ const addSchema = async (req, res) => {
       return res.status(500).json(err);
   }
 };
+
 
 
 module.exports = connection;
