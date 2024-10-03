@@ -3,7 +3,7 @@ const fs = require('fs');
 require("dotenv").config();
 
 const port = 13212;
-const dbName = process.env.DB_NAME || 'dynamic';
+const dbName = process.env.DB_NAME || 'defaultdb';
 
 // const connection = mysql.createConnection({
 //     port: 13216,
