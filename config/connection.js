@@ -25,10 +25,10 @@ const dbName = process.env.DB_NAME || 'dynamic';
 // });
 const connection = mysql.createConnection({
   port: 13212,
-  host: 'mysql-1fb2cc5f-mohanjividil-0173.a.aivencloud.com',
+  host: 'mysql-25136235-mohanjividil-0173.h.aivencloud.com,
   user: 'avnadmin',
-  password: 'AVNS_4YODaTCgXDqNIQodn-E',
-  database: 'dynamic',
+  password: 'AVNS_-3vnY_eQSQO7Help7oR',
+  database: 'defaultdb',
   ssl: {
     // Specify the path to your .pem file
     ca: fs.readFileSync('assets/ca.pem'),
